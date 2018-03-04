@@ -1,0 +1,46 @@
+﻿<Window x:Class="AppWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWpf"
+        xmlns:controls="clr-namespace:AppWpf.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="378.616" Width="525">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="2" Background="Red" Foreground="White" HorizontalAlignment="Right" Margin="50 10 50 10" Click="ButtonCalculate_Click">
+            <StackPanel Orientation="Horizontal">
+                <!--<Image Source="/images/analytics.png" Height="24" Width="24" />-->
+
+                <TextBlock Text="Calculate" Margin="0,0"/>
+            </StackPanel>
+        </Button>
+        <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Center"/>
+            <Label Content="Stock Price" />
+            <TextBox x:Name="TextBoxStockPrice" Text="50" />
+            <Label Content="Strike of Option" />
+            <TextBox x:Name="TextBoxStrikeOption" Text="47,25" />
+            <Label Content="Risk-free Rate" />
+            <TextBox  x:Name="TextBoxRiskRate" Text="0,05" />
+            <Label Content="Time To Expire (In days)" />
+            <TextBox x:Name="TextBoxTimeToExpire" Text="10" />
+            <Label Content="Volatility" />
+            <TextBox x:Name="TextBoxVolatility" Text="0,25" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 8 0 8">
+            <Label Content="Call Price:" FontSize="24"  />
+            <Label x:Name="TextBoxBSCallPrice" Content="-" FontSize="24"  />
+            <Label Content="Put Price:" FontSize="24" />
+            <Label x:Name="TextBoxBSPutPrice" Content="-" FontSize="24"  />
+        </StackPanel>
+    </Grid>
+</Window>
