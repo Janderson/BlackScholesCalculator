@@ -8,7 +8,7 @@ This Simple Project To Calculate Black And Scholes Formula.
 
 
 
-[Black Scholes Simples Calculator Download]
+[Black Scholes Calculator Download (Exe)](https://github.com/Janderson/BlackScholesCalculator/releases/download/v1.0/BlackScholesCalculator.zip)
 
 
 
