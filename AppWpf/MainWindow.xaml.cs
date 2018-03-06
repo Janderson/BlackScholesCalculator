@@ -26,28 +26,47 @@ namespace AppWpf
             InitializeComponent();
         }
 
-        private void ButtonCalculate_Click(object sender, RoutedEventArgs e)
+
+        public void Calculate()
         {
             var Calculator = new BlackScholes();
 
             var Values = new CalculatorValues
             {
                 UnderlinePrice = Convert.ToDouble(TextBoxStockPrice.Text),
-                RiskFreeRate = Convert.ToDouble(TextBoxRiskRate.Text),
-                Volatility = Convert.ToDouble(TextBoxVolatility.Text),
+                RiskFreeRate = Convert.ToDouble(TextBoxRiskRate.Text) / 100,
+                Volatility = Convert.ToDouble(TextBoxVolatility.Text) / 100,
                 Strike = Convert.ToDouble(TextBoxStrikeOption.Text),
                 QtdDaysExpire = Convert.ToDouble(TextBoxTimeToExpire.Text),
                 Dividend = 0
             };
-            double PriceValue = Calculator.CallPremium(Values);
+
 
             TextBoxBSCallPrice.Content = Calculator.CallPremium(Values).ToString("0.000");
             TextBoxBSPutPrice.Content = Calculator.PutPremium(Values).ToString("0.000");
+
+        }
+        private void ButtonCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            Calculate();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
+        }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs KeyEvent)
+        {
+            if (KeyEvent.Key == Key.Enter)
+            {
+                Calculate();
+            }
         }
     }
 }

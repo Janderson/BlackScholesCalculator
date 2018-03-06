@@ -4,43 +4,87 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppWpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:controls="clr-namespace:AppWpf.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="378.616" Width="525">
+        x:Name="window"
+        Width="430" Height="680" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" 
+        PreviewKeyDown="Window_KeyDown"
+        >
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
+        <!-- Top of application -->
 
-        <Button Grid.Row="2" Background="Red" Foreground="White" HorizontalAlignment="Right" Margin="50 10 50 10" Click="ButtonCalculate_Click">
-            <StackPanel Orientation="Horizontal">
-                <!--<Image Source="/images/analytics.png" Height="24" Width="24" />-->
-
-                <TextBlock Text="Calculate" Margin="0,0"/>
+        <Grid  Grid.Row="0" Height="60" VerticalAlignment="Top" Background="#FF0D437A"  >
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="tt"/>
+            </Grid.RenderTransform> 
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+            </Grid.Effect>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="" VerticalAlignment="Center" FontSize="16"/>
+                <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
+                    <StackPanel Width="150">
+                        <Button Content="Configuration"/>
+                        <Separator/>
+                        <Button Content="Exit" Click="ButtonExit_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
             </StackPanel>
-        </Button>
-        <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
-            <StackPanel HorizontalAlignment="Center"/>
-            <Label Content="Stock Price" />
-            <TextBox x:Name="TextBoxStockPrice" Text="50" />
-            <Label Content="Strike of Option" />
-            <TextBox x:Name="TextBoxStrikeOption" Text="47,25" />
-            <Label Content="Risk-free Rate" />
-            <TextBox  x:Name="TextBoxRiskRate" Text="0,05" />
-            <Label Content="Time To Expire (In days)" />
-            <TextBox x:Name="TextBoxTimeToExpire" Text="10" />
-            <Label Content="Volatility" />
-            <TextBox x:Name="TextBoxVolatility" Text="0,25" />
-        </StackPanel>
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 8 0 8">
-            <Label Content="Call Price:" FontSize="24"  />
-            <Label x:Name="TextBoxBSCallPrice" Content="-" FontSize="24"  />
-            <Label Content="Put Price:" FontSize="24" />
-            <Label x:Name="TextBoxBSPutPrice" Content="-" FontSize="24"  />
-        </StackPanel>
+            <TextBlock HorizontalAlignment="Center" Foreground="WhiteSmoke" VerticalAlignment="Center"  FontSize="22" Height="34">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>Black Schole Calculator</TextBlock>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            
+            <Border Background="#FF6BEBFF" CornerRadius="20" Margin="20,20,20,20">
+                <StackPanel Margin="20">
+                    
+                    <StackPanel>
+                        <StackPanel HorizontalAlignment="Center"/>
+                        <Label Content="Stock Price"  />
+                        <TextBox x:Name="TextBoxStockPrice" Text="50" />
+                        <Label Content="Strike of Option" />
+                        <TextBox x:Name="TextBoxStrikeOption" Text="47,25" />
+                        <Label Content="Risk-free Rate (%)" />
+                        <TextBox  x:Name="TextBoxRiskRate" Text="5,0" />
+                        <Label Content="Time To Expire (In days)" />
+                        <TextBox x:Name="TextBoxTimeToExpire" Text="10" />
+                        <Label Content="Volatility (%)" />
+                        <TextBox x:Name="TextBoxVolatility" Text="25,0" />
+                    </StackPanel>
+                    <Separator />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,41,0,8" Grid.RowSpan="2">
+                        <Label Content="Call:" FontSize="24"  />
+                        <Label x:Name="TextBoxBSCallPrice" Content="-" FontSize="24" Margin="0 0 20 0" />
+                        <Label Content="Put:" FontSize="24" />
+                        <Label x:Name="TextBoxBSPutPrice" Content="-" FontSize="24"  />
+                    </StackPanel>
+                    <Separator />
+                    <Button Background="#FF0D437A" Foreground="White" HorizontalAlignment="Right" Margin="0,5,28,5" Click="ButtonCalculate_Click" Width="104" Height="34">
+                        <StackPanel Orientation="Horizontal">
+                            <!--<Image Source="/images/analytics.png" Height="24" Width="24" />-->
+
+                            <TextBlock Text="Calculate" Margin="0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

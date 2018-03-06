@@ -65,6 +65,7 @@
     <Compile Include="CalculatorValues.cs" />
     <Compile Include="Garman.cs" />
     <Compile Include="ICalculator.cs" />
+    <Compile Include="ModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
