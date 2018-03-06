@@ -1,4 +1,4 @@
-# Black Scholes Simples Calculator
+# Black Scholes Calculator (Very Simple)
 This Simple Project To Calculate Black And Scholes Formula.
 
 
